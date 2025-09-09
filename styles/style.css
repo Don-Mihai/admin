@@ -1,5 +1,9 @@
+:root {
+  --border-radius-container: 30px;
+}
+
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: rgb(199, 198, 198);
 }
 .container {
@@ -7,8 +11,7 @@ body {
   width: 100%;
   margin: 0 auto;
   padding: 15px 20px;
-  border-radius: 30px;
-  background-color: white;
+  border-radius: var(--border-radius-container);
 }
 .wrapper {
   padding: 20px;
@@ -18,7 +21,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 30px;
+  background-color: white;
 }
 .logo {
   font-size: 24px;
@@ -39,12 +42,12 @@ body {
   font-weight: bolder;
   background-color: rgba(199, 198, 198, 0.418);
   padding: 12px;
-  border-radius: 20px;
+  border-radius: var(--border-radius-container);
 }
 .link:hover {
   background-color: rgba(199, 198, 198, 0.418);
   padding: 12px;
-  border-radius: 20px;
+  border-radius: var(--border-radius-container);
 }
 .profile {
   display: flex;
@@ -58,4 +61,3 @@ body {
   width: 20px;
   height: 20px;
 }
-

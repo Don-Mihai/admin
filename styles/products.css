@@ -2,6 +2,7 @@
 .product-section {
   height: auto;
   margin-top: 20px;
+  background-color: white;
 }
 .title {
   display: flex;
@@ -20,7 +21,7 @@
   align-items: center;
   background-color: rgba(226, 226, 226, 0.993);
   border: none;
-  border-radius: 20px;
+  border-radius: var(--border-radius-container);
   height: 30px;
   padding: 0 15px;
   transition: border-color 0.3s ease;
@@ -55,7 +56,7 @@
   align-items: center;
   background-color: rgba(255, 254, 254, 0.993);
   border: 1px solid black;
-  border-radius: 20px;
+  border-radius: var(--border-radius-container);
   height: 30px;
   padding: 0 15px;
   transition: all 0.3s ease;
@@ -107,12 +108,12 @@
   font-weight: bolder;
   background-color: rgba(199, 198, 198, 0.418);
   padding: 12px;
-  border-radius: 20px;
+  border-radius: var(--border-radius-container);
 }
 .tovari:hover {
   color: black;
   background-color: rgba(199, 198, 198, 0.418);
-  border-radius: 20px;
+  border-radius: var(--border-radius-container);
 }
 
 /*контейнер с продуктами*/
@@ -128,7 +129,7 @@
   flex-direction: column;
   align-items: center;
   border: 1px solid rgb(177, 177, 177);
-  border-radius: 20px;
+  border-radius: var(--border-radius-container);
   padding: 5px 0;
 }
 
@@ -144,7 +145,7 @@
   display: flex;
   background-color: #8687881f;
   margin: 10px;
-  border-radius: 20px;
+  border-radius: var(--border-radius-container);
   padding: 10px;
 }
 .img {

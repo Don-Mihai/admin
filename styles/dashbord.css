@@ -1,5 +1,56 @@
 /* ----- DASHBORD  ------ */
-
 .dashbord {
-  
+  margin-top: 20px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.analitics {
+  margin-top: 20px;
+  display: grid;
+  gap: 20px;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "total sold sold"
+    "diagram sold sold"
+    "diagram sold sold";
+  height: 400px;
+}
+
+.analitic {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-container);
+  background-color: white;
+}
+
+.total {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
+  grid-area: total;
+}
+.total__content {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.total__title {
+  font-size: 20px;
+}
+
+.diagram {
+  grid-area: diagram;
+}
+
+.sold {
+  grid-area: sold;
 }
