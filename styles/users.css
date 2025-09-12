@@ -1,6 +1,6 @@
 .users {
   margin-top: 20px;
-  background-color: white;
+  background-color: var(--color-container);
   border-radius: var(--border-radius-container);
 }
 .users__title {
@@ -20,25 +20,25 @@
   width: auto;
   height: 40px;
   border-radius: 30px;
-  background-color: rgb(224, 223, 223);
-  border: 1px solid black;
+  background-color: var(--color-background-user-button);
+  border: 1px solid var(--color-primary);
   padding: 15px;
 }
 .users__button:hover {
-  background-color: white;
+  background-color: var(--color-background-container);
 }
 button {
   border: none;
   background-color: inherit;
   border-radius: 30px;
-  color: rgb(7, 1, 1);
+  color: var(--color-primary-dark);
   font-size: 16px;
   text-align: center;
   font-weight: bold;
 }
 button:hover {
-  background-color: white;
-  color: black;
+  background-color: var(--color-background-container);
+  color: var(--color-text-primary);
 }
 .button__img {
   height: 20px;
@@ -52,7 +52,7 @@ button:hover {
   margin-bottom: 20px;
 }
 .users__container {
-  background-color: rgba(199, 198, 198, 0.418);
+  background-color: var(--color-background-hover);
   border-radius: var(--border-radius-container);
 }
 .users__top {
@@ -70,8 +70,8 @@ button:hover {
 }
 .users__input {
   display: flex;
-  border: 1px solid rgba(199, 198, 198, 0.418);
-  background-color: white;
+  border: 1px solid var(--color-border-user-input);
+  background-color: var(--color-background-container);
   border-radius: 30px;
   height: 35px;
   padding: 10px 10px;
@@ -86,19 +86,19 @@ button:hover {
 }
 
 .users__input:hover {
-  border: 1px solid gray;
+  border: 1px solid var(--color-border-hover);
 }
 
 .users__input:focus-within {
-  border: 1px solid #6e6e6e;
-  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--color-secondary-darker);
+  background-color: var(--color-background-input-focus);
 }
 
 .users__left {
-  border: 1px solid rgba(31, 18, 18, 0);
+  border: 1px solid var(--color-border-user-left);
   display: flex;
   padding: 5px 15px;
-  background-color: white;
+  background-color: var(--color-background-container);
   border-radius: 30px;
   align-items: center;
   gap: 8px;
@@ -106,8 +106,8 @@ button:hover {
 }
 
 .users__left:hover {
-  background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(31, 18, 18);
+  background-color: var(--color-background-container);
+  border: 1px solid var(--color-border-user-left-hover);
   cursor: pointer;
 }
 .users__left__button {
@@ -121,7 +121,7 @@ button:hover {
 }
 
 .table {
-  border: 1px solid #e0e0e000;
+  border: 1px solid var(--color-border-table);
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -135,10 +135,10 @@ button:hover {
 
 .table__header {
   display: flex;
-  background-color: #d4d4d4d5;
+  background-color: var(--color-background-table-header);
   padding: 16px;
   font-weight: bold;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--color-border-table-row);
   align-items: center;
 }
 
@@ -162,14 +162,14 @@ button:hover {
 .table__body {
   display: flex;
   padding: 16px;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--color-border-table-row);
   align-items: center;
   transition: background-color 0.2s ease;
-  background-color: white;
+  background-color: var(--color-background-table-row);
 }
 
 .table__body:hover {
-  background-color: #d8d8d8;
+  background-color: var(--color-background-table-row-hover);
 }
 
 .table__body:last-child {
@@ -202,7 +202,7 @@ button:hover {
 .table__checkbox {
   width: 16px;
   height: 16px;
-  border: 2px solid #a5a5a5;
+  border: 2px solid var(--color-border-checkbox);
   border-radius: 3px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -211,7 +211,7 @@ button:hover {
 }
 
 .table__checkbox:hover {
-  border-color: #626363;
+  border-color: var(--color-border-checkbox-hover);
   transform: scale(1.1);
 }
 
@@ -238,14 +238,14 @@ button:hover {
 
 .name {
   margin: 0;
-  color: #050404;
+  color: var(--color-text-name);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: bold;
 }
 .created {
-  color: #626363;
+  color: var(--color-text-created);
 }
 
 .trash {
@@ -258,21 +258,21 @@ button:hover {
 
 .Status_a {
   padding: 5px 5px;
-  background-color: rgba(166, 211, 166, 0.548);
+  background-color: var(--color-status-active-bg);
   border-radius: 5px;
-  color: green;
+  color: var(--color-status-active-text);
   cursor: pointer;
 }
 .Status_i {
-  background-color: rgba(211, 60, 60, 0.39);
+  background-color: var(--color-status-inactive-bg);
   padding: 5px 5px;
   border-radius: 5px;
-  color: red;
+  color: var(--color-status-inactive-text);
   cursor: pointer;
 }
 
 .table__body:hover {
-  background-color: #d8d8d8;
+  background-color: var(--color-background-table-row-hover);
   transform: translateX(10px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -283,10 +283,10 @@ button:hover {
 .table__body {
   display: flex;
   padding: 16px;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--color-border-table-row);
   align-items: center;
   transition: all 0.3s ease;
-  background-color: white;
+  background-color: var(--color-background-table-row);
   opacity: 0;
   transform: translateY(20px);
   animation: slideIn 0.4s ease forwards;
@@ -358,7 +358,7 @@ button:hover {
 
 .trash:hover {
   transform: scale(1.1);
-  background-color: rgba(255, 0, 0, 0.1);
+  background-color: var(--color-interactive-hover);
   filter: brightness(0.8);
 }
 

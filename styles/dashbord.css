@@ -15,9 +15,9 @@
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas:
-    "total sold sold"
-    "diagram sold sold"
-    "diagram sold sold";
+    'total sold sold'
+    'diagram sold sold'
+    'diagram sold sold';
   height: 400px;
 }
 
@@ -27,7 +27,7 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--border-radius-container);
-  background-color: white;
+  background-color: var(--color-background-container);
 }
 
 .total {
