@@ -1,0 +1,367 @@
+.users {
+  margin-top: 20px;
+  background-color: white;
+  border-radius: var(--border-radius-container);
+}
+.users__title {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.title {
+  font-size: 40px;
+}
+.users__button {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 40px;
+  border-radius: 30px;
+  background-color: rgb(224, 223, 223);
+  border: 1px solid black;
+  padding: 15px;
+}
+.users__button:hover {
+  background-color: white;
+}
+button {
+  border: none;
+  background-color: inherit;
+  border-radius: 30px;
+  color: rgb(7, 1, 1);
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+}
+button:hover {
+  background-color: white;
+  color: black;
+}
+.button__img {
+  height: 20px;
+  width: 20px;
+}
+
+.users__link {
+  display: flex;
+  gap: 30px;
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+.users__container {
+  background-color: rgba(199, 198, 198, 0.418);
+  border-radius: var(--border-radius-container);
+}
+.users__top {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 20px 20px;
+}
+
+.input__img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  margin-top: -2px;
+}
+.users__input {
+  display: flex;
+  border: 1px solid rgba(199, 198, 198, 0.418);
+  background-color: white;
+  border-radius: 30px;
+  height: 35px;
+  padding: 10px 10px;
+}
+.input {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  height: 100%;
+  font-size: 14px;
+}
+
+.users__input:hover {
+  border: 1px solid gray;
+}
+
+.users__input:focus-within {
+  border: 1px solid #6e6e6e;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.users__left {
+  border: 1px solid rgba(31, 18, 18, 0);
+  display: flex;
+  padding: 5px 15px;
+  background-color: white;
+  border-radius: 30px;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.users__left:hover {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(31, 18, 18);
+  cursor: pointer;
+}
+.users__left__button {
+  cursor: pointer;
+}
+
+/*таблица*/
+.users__table {
+  width: 100%;
+  font-size: 14px;
+}
+
+.table {
+  border: 1px solid #e0e0e000;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 5px 15px;
+}
+
+.table__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.table__header {
+  display: flex;
+  background-color: #d4d4d4d5;
+  padding: 16px;
+  font-weight: bold;
+  border-bottom: 1px solid #e0e0e0;
+  align-items: center;
+}
+
+.table__header .header__name {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+}
+
+.table__header .header__name:first-child {
+  flex: 2;
+  padding-left: 0;
+}
+
+.table__header .header__name:nth-child(2) {
+  flex: 2;
+}
+
+.table__body {
+  display: flex;
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  align-items: center;
+  transition: background-color 0.2s ease;
+  background-color: white;
+}
+
+.table__body:hover {
+  background-color: #d8d8d8;
+}
+
+.table__body:last-child {
+  border-bottom: none;
+}
+
+.table__body .header__name {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+}
+
+.table__body .header__name:first-child {
+  flex: 2;
+  padding-left: 0;
+}
+
+.table__body .header__name:nth-child(2) {
+  flex: 2;
+}
+
+.body__name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.table__checkbox {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #a5a5a5;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.table__checkbox:hover {
+  border-color: #626363;
+  transform: scale(1.1);
+}
+
+.table__checkbox:active {
+  transform: scale(0.95);
+}
+
+.table__img {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.user__img {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.table__img:hover {
+  transform: scale(1.1);
+}
+
+.name {
+  margin: 0;
+  color: #050404;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+}
+.created {
+  color: #626363;
+}
+
+.trash {
+  position: absolute;
+  right: 15px;
+  cursor: pointer;
+}
+
+/* Стили для статусов */
+
+.Status_a {
+  padding: 5px 5px;
+  background-color: rgba(166, 211, 166, 0.548);
+  border-radius: 5px;
+  color: green;
+  cursor: pointer;
+}
+.Status_i {
+  background-color: rgba(211, 60, 60, 0.39);
+  padding: 5px 5px;
+  border-radius: 5px;
+  color: red;
+  cursor: pointer;
+}
+
+.table__body:hover {
+  background-color: #d8d8d8;
+  transform: translateX(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.table__body {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.table__body {
+  display: flex;
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  align-items: center;
+  transition: all 0.3s ease;
+  background-color: white;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideIn 0.4s ease forwards;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Задержка для каждой строки */
+.table__body:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.table__body:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.table__body:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.table__body:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.table__body:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.table__body:nth-child(6) {
+  animation-delay: 0.6s;
+}
+.table__body:nth-child(7) {
+  animation-delay: 0.7s;
+}
+
+/* Анимация удаления */
+.table__body.deleting {
+  animation: slideOut 0.3s ease-out forwards;
+}
+
+@keyframes slideOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+    max-height: 100px;
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-100%);
+    max-height: 0;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+/* Улучшенная анимация для кнопки удаления */
+.trash {
+  position: absolute;
+  right: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.trash:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 0, 0, 0.1);
+  filter: brightness(0.8);
+}
+
+.trash:active {
+  transform: scale(0.95);
+}
