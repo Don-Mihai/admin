@@ -20,21 +20,18 @@ export default function Users() {
 
   const filteredUsers = users.filter((user) => {
     const keys = Object.keys(user);
-    let isMatch = false
+    let isMatch = false;
 
     keys.forEach((key) => {
       if (user[key].includes(serchText)) {
-        isMatch =  true;
+        isMatch = true;
       }
     });
 
     return isMatch;
   });
 
-  const sortedUsers = filteredUsers.sort((user1, user2) => {
-
-    
-  })
+  const sortedUsers = filteredUsers.sort((user1, user2) => {});
 
   const fetchUsers = async () => {
     try {
@@ -76,51 +73,51 @@ export default function Users() {
 
   return (
     <div>
-      <div className='wrapper'></div>
+      <div className="wrapper"></div>
       <Header />
-      <section className='users container'>
-        <div className='users__title'>
-          <h3 className='title'>Users</h3>
-          <div className='users__button'>
-            <button onClick={openModal} className='button'>
+      <section className="users container">
+        <div className="users__title">
+          <h3 className="title">Users</h3>
+          <div className="users__button">
+            <button onClick={openModal} className="button">
               Add User
             </button>
             {isModalOpen && <Modal onCreateUser={onCreateUser} onClose={closeModal} />}
-            <img className='button__img' src='./plus.svg' alt='+' />
+            <img className="button__img" src="./plus.svg" alt="+" />
           </div>
         </div>
-        <nav className='users__link'>
-          <a href='' className='link__active'>
+        <nav className="users__link">
+          <a href="" className="link__active">
             Administration
           </a>
-          <a href='' className='link'>
+          <a href="" className="link">
             General Partners
           </a>
-          <a href='' className='link'>
+          <a href="" className="link">
             Wealt Managers
           </a>
         </nav>
-        <div className='users__container'>
-          <div className='users__top'>
-            <div className='users__input'>
-              <img src='./search.svg' alt='' className='input__img' />
-              <input onChange={handleSearch} className='input' type='text' name='' id='' placeholder='Searh Users' />
+        <div className="users__container">
+          <div className="users__top">
+            <div className="users__input">
+              <img src="./search.svg" alt="" className="input__img" />
+              <input onChange={handleSearch} className="input" type="text" name="" id="" placeholder="Searh Users" />
             </div>
-            <div className='users__left'>
-              <img src='./filter.svg' alt='' className='users__left__img' />
-              <button className='users__left__button'>Filters</button>
+            <div className="users__left">
+              <img src="./filter.svg" alt="" className="users__left__img" />
+              <button className="users__left__button">Filters</button>
             </div>
           </div>
-          <div className='users__table'>
-            <div className='table'>
-              <div className='table__info'>
-                <div className='table__header'>
+          <div className="users__table">
+            <div className="table">
+              <div className="table__info">
+                <div className="table__header">
                   {HEADERS.map((header) => {
                     return (
-                      <div className='header__name'>
-                        <div className='table__checkbox'></div>
-                        <p className='name'>{header}</p>
-                        <img src='./chevron1.svg' alt='' className='table__img' />
+                      <div className="header__name">
+                        <div className="table__checkbox"></div>
+                        <p className="name">{header}</p>
+                        <img src="./chevron1.svg" alt="" className="table__img" />
                       </div>
                     );
                   })}

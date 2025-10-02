@@ -1,6 +1,6 @@
-import React from "react";
-import styles from "./Dachbord.css";
-import Header from "../../components/Header/Header";
+import React from 'react';
+import styles from './Dachbord.css';
+import Header from '../../components/Header/Header';
 
 export default function Dachbord() {
   return (

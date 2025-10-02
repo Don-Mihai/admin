@@ -1,6 +1,6 @@
-import React from "react";
-import styles from "./Catalog.css";
-import Header from "../../components/Header/Header";
+import React from 'react';
+import styles from './Catalog.css';
+import Header from '../../components/Header/Header';
 
 export default function Catalog() {
   return (
@@ -13,11 +13,7 @@ export default function Catalog() {
             <div class="title__right">
               <div class="input__container">
                 <img src="./search.svg" alt="" class="input__img" />
-                <input
-                  class="input"
-                  type="search"
-                  placeholder="search product.."
-                />
+                <input class="input" type="search" placeholder="search product.." />
               </div>
               <div class="button__container">
                 <img src="./plus.svg" alt="" class="plus" />

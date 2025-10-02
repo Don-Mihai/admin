@@ -1,10 +1,24 @@
 // utils/validation.js
-import * as yup from "yup";
+import { boolean, object, string, date } from 'yup';
 
-export const addUser = yup.object({
-  name: yup.string().required("Имя обязательно"),
-  email: yup.string().email("Некорректный email").required("Email обязателен"),
-  role: yup.string().required("Роль обязательна"),
-  created: yup.date().required("Дата создания обязательна"),
-  status: yup.string().required("Статус обязателен"),
+export const addUser = object({
+  name: string().required('Имя обязательно'),
+  email: string().email('Некорректный email').required('Email обязателен'),
+  role: string().required('Роль обязательна'),
+  created: date().required('Дата создания обязательна'),
+  status: string().required('Статус обязателен')
+});
+
+export const loginSchema = object({
+  login: string().required('Логин обязательное поле'),
+  password: string().required('Пароль обязательное поле'),
+  checkbox: boolean().isTrue('Согласие с условиями обязательное поле')
+});
+
+export const registerSchema = object({
+  name: string().required(),
+  login: string().required(),
+  email: string().email(),
+  password: string().required(),
+  repeatPassword: string().required()
 });

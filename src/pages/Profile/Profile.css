@@ -6,7 +6,9 @@
   padding: 30px;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .user:hover {
@@ -40,7 +42,9 @@
   object-fit: cover;
   border: 4px solid #ffffff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .user__img:hover {
@@ -286,7 +290,7 @@
 }
 
 .user_sert::before {
-  content: "📄";
+  content: '📄';
   font-size: 24px;
   display: flex;
   align-items: center;
@@ -296,11 +300,11 @@
 }
 
 .button__left .user_sert::before {
-  content: "🎨";
+  content: '🎨';
 }
 
 .button__right .user_sert::before {
-  content: "⚙️";
+  content: '⚙️';
 }
 
 .user__general {
@@ -471,7 +475,9 @@
   height: 40px;
   border-radius: 30px;
   border: 1px solid rgba(0, 0, 0, 0.459);
-  transition: border-color 0.3s ease, transform 0.2s ease;
+  transition:
+    border-color 0.3s ease,
+    transform 0.2s ease;
 }
 
 .calendar__button-active {
@@ -507,7 +513,9 @@
   background: linear-gradient(135deg, #f5f5f5 0%, #a8a8a8d2 100%);
   border: 1px solid #8686868c;
   border-radius: 15px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 .header__day:hover {
   background: linear-gradient(135deg, #e8e8e8 0%, #9a9a9ad2 100%);

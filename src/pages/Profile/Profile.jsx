@@ -1,6 +1,6 @@
-import React from "react";
-import styles from "./Profile.css";
-import Header from "../../components/Header/Header";
+import React from 'react';
+import styles from './Profile.css';
+import Header from '../../components/Header/Header';
 
 export default function Profile() {
   return (
@@ -16,11 +16,7 @@ export default function Profile() {
                   <div class="user__name-top">
                     <p class="user__name">John</p>
                     <div class="user__time">
-                      <img
-                        src="./img/filter.svg"
-                        alt=""
-                        class="user__time-img"
-                      />
+                      <img src="./img/filter.svg" alt="" class="user__time-img" />
                       <p class="user__time-time">168/h</p>
                     </div>
                   </div>
@@ -65,11 +61,7 @@ export default function Profile() {
                 <div class="general__center">
                   <p class="general__center-title">Finance reawar</p>
                   <div class="general__ceneter-right">
-                    <img
-                      src="./img/care.svg"
-                      alt=""
-                      class="general__center-img"
-                    />
+                    <img src="./img/care.svg" alt="" class="general__center-img" />
                     <p class="general__title">$54/h</p>
                   </div>
                 </div>
@@ -89,9 +81,7 @@ export default function Profile() {
                 </div>
                 <div class="conatacts__container">
                   <p class="conatacts__title">Adres</p>
-                  <p class="adres__number">
-                    Flat 5B, 27 King's Road, London, United Kingdom
-                  </p>
+                  <p class="adres__number">Flat 5B, 27 King's Road, London, United Kingdom</p>
                 </div>
               </div>
             </div>
