@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Socials from '../../components/Socials/Socials';
 import styles from './Login.module.css';
 import { useState } from 'react';
-import { loginSchema } from '../../utils/validation';
+import { loginSchema } from '../../utiles/validation';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 

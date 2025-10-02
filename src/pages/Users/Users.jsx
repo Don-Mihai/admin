@@ -1,76 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Users.css';
 import Header from '../../components/Header/Header';
-import Modal from '../../components/Modal/Modal';
+import Modal from '../../modules/Modal/ui';
 import User from '../../components/User/User';
-import axios from 'axios';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { API_URL } from '../../utiles/api';
+
 import { HEADERS } from './consts';
+import { useUsers } from './model';
 
 export default function Users() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [users, setUsers] = useState([]);
-  const [serchText, setSerchText] = useState('');
-
-  const handleSearch = (e) => {
-    setSerchText(e.target.value);
-  };
-
-  const filteredUsers = users.filter((user) => {
-    const keys = Object.keys(user);
-    let isMatch = false;
-
-    keys.forEach((key) => {
-      if (user[key].includes(serchText)) {
-        isMatch = true;
-      }
-    });
-
-    return isMatch;
-  });
-
-  const sortedUsers = filteredUsers.sort((user1, user2) => {});
-
-  const fetchUsers = async () => {
-    try {
-      const response = await axios.get(`${API_URL}/users`);
-      setUsers(response.data);
-    } catch (err) {
-      console.error('Ошибка при загрузке пользователей:', err);
-    }
-  };
-
-  useEffect(() => {
-    fetchUsers();
-  }, []);
-
-  const handleDeleteUser = async (userId) => {
-    try {
-      await axios.delete(`${API_URL}/users/${userId}`);
-      alert('Пользователь удален');
-      fetchUsers();
-    } catch (error) {
-      toast.error('Ошибка при удалении пользователя');
-      console.error(error);
-    }
-  };
-
-  const openModal = () => {
-    setIsModalOpen(true);
-    console.log('open');
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const onCreateUser = async (formValues) => {
-    const response = await axios.post(`${API_URL}/users`, formValues);
-    fetchUsers();
-  };
-
+  const { isModalOpen, filteredUsers, handleSearch, handleDeleteUser, openModal, closeModal, onCreateUser, setActiveRole, activeRole } = useUsers();
   return (
     <div>
       <div className="wrapper"></div>
@@ -87,15 +25,12 @@ export default function Users() {
           </div>
         </div>
         <nav className="users__link">
-          <a href="" className="link__active">
-            Administration
-          </a>
-          <a href="" className="link">
-            General Partners
-          </a>
-          <a href="" className="link">
-            Wealt Managers
-          </a>
+          <button onClick={() => setActiveRole('admins')} className={activeRole === 'admins' ? 'link__active' : 'link'}>
+            Admins
+          </button>
+          <button onClick={() => setActiveRole('clients')} className={activeRole === 'clients' ? 'link__active' : 'link'}>
+            Clients
+          </button>
         </nav>
         <div className="users__container">
           <div className="users__top">

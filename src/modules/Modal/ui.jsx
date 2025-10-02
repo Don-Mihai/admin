@@ -1,27 +1,9 @@
 import React from 'react';
-import styles from './Modal.css';
-import { addUser } from '../../utiles/validation';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { toast } from 'react-toastify';
+import './styles.css';
+import { useModalForm } from './model';
 
 function Modal({ onClose, onCreateUser }) {
-  const { register, handleSubmit, formState, reset } = useForm({
-    resolver: yupResolver(addUser)
-  });
-
-  const onSubmit = async (formValues) => {
-    try {
-      onCreateUser(formValues);
-      reset();
-      alert('Пользователь добавлен');
-      console.log(formValues);
-      onClose();
-    } catch (error) {
-      toast.error('Ошибка при добавлении пользователя');
-      console.error(error);
-    }
-  };
+  const { register, handleSubmit, formState, onSubmit } = useModalForm(onClose, onCreateUser);
 
   return (
     <div className="modal-overlay">
