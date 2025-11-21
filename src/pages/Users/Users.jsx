@@ -8,7 +8,7 @@ import { HEADERS } from './consts';
 import { useUsers } from './model';
 
 export default function Users() {
-  const { isModalOpen, filteredUsers, handleSearch, handleDeleteUser, openModal, closeModal, onCreateUser, setActiveRole, activeRole } = useUsers();
+  const { isModalOpen, filteredUsers, handleSearch, createUsers, deleteUsers, openModal, closeModal, setActiveRole, activeRole } = useUsers();
   return (
     <div>
       <div className="wrapper"></div>
@@ -20,7 +20,7 @@ export default function Users() {
             <button onClick={openModal} className="button">
               Add User
             </button>
-            {isModalOpen && <Modal onCreateUser={onCreateUser} onClose={closeModal} />}
+            {isModalOpen && <Modal onCreateUser={createUsers} onClose={closeModal} />}
             <img className="button__img" src="./plus.svg" alt="+" />
           </div>
         </div>
@@ -69,7 +69,7 @@ export default function Users() {
                         role={user.role}
                         created={user.created}
                         status={user.status}
-                        onDelete={handleDeleteUser}
+                        onDelete={deleteUsers}
                       />
                     ))
                   ) : (

@@ -1,15 +1,22 @@
 import React from 'react';
 import styles from './Catalog.css';
 import Header from '../../components/Header/Header';
+import { useDispatch, useSelector } from 'react-redux';
+import { decrement, increment } from '../../redux/counter';
 
 export default function Catalog() {
+  const value = useSelector((store) => store.counter.value);
+  const dispatch = useDispatch();
+
   return (
     <div>
       <div class="wrapper">
         <Header />
         <section class="product-section container">
           <div class="title">
-            <p class="title__left">Products</p>
+            <p class="title__left">Products {value}</p>
+            <button onClick={() => dispatch(increment())}>+</button>
+            <button onClick={() => dispatch(decrement())}>-</button>
             <div class="title__right">
               <div class="input__container">
                 <img src="./search.svg" alt="" class="input__img" />
