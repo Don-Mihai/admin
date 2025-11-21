@@ -6,6 +6,7 @@ import User from '../../components/User/User';
 
 import { HEADERS } from './consts';
 import { useUsers } from './model';
+import { UserI } from '@/redux/User/types';
 
 export default function Users() {
   const { isModalOpen, filteredUsers, handleSearch, createUsers, deleteUsers, openModal, closeModal, setActiveRole, activeRole } = useUsers();
@@ -60,7 +61,7 @@ export default function Users() {
 
                 <div>
                   {filteredUsers.length > 0 ? (
-                    filteredUsers.map((user) => (
+                    filteredUsers.map((user: UserI) => (
                       <User
                         key={user.id}
                         id={user.id}

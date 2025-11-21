@@ -2,7 +2,17 @@
 import styles from './User.css';
 import React from 'react';
 
-export default function User({ id, name, email, role, created, status, onDelete }) {
+interface Props {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  created: string;
+  status: string;
+  onDelete: (id: string) => void;
+}
+
+export default function User({ id, name, email, role, created, status, onDelete }: Props) {
   return (
     <div className="table__body">
       <div className="header__name">
