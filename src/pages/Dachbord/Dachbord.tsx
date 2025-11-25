@@ -1,11 +1,7 @@
-import React from 'react';
-import styles from './Dachbord.css';
+import './Dachbord.css';
 import Header from '../../components/Header/Header';
-import { useDispatch } from 'react-redux';
-import { increment } from '../../redux/counter';
 
 export default function Dachbord() {
-  const dispatch = useDispatch();
   return (
     <div>
       <div className="wrapper">
@@ -13,7 +9,6 @@ export default function Dachbord() {
         <section className="dashbord container">
           <div className="top__container">
             <h3 className="title">Products statistic</h3>
-            <button onClick={() => dispatch(increment())}>+</button>
             <div className="filteres"></div>
           </div>
           <div className="analitics">

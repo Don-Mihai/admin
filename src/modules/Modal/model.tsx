@@ -2,13 +2,16 @@ import { addUser } from '../../utiles/validation';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
+import { UserI } from '@/redux/User/types';
 
-export const useModalForm = (onCreateUser: (formValues: any) => void, onClose: () => void) => {
+export type LocalUserI = Omit<UserI, 'id'>;
+
+export const useModalForm = (onCreateUser: (formValues: LocalUserI) => void, onClose: () => void) => {
   const { register, handleSubmit, formState, reset } = useForm({
     resolver: yupResolver(addUser)
   });
 
-  const onSubmit = async (formValues: any) => {
+  const onSubmit = async (formValues: LocalUserI) => {
     try {
       onCreateUser(formValues);
       reset();

@@ -6,12 +6,18 @@ import { loginSchema } from '../../utiles/validation';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+interface LoginFormValuesI {
+  login: string;
+  password: string;
+  checkbox?: boolean;
+}
+
 const Login = () => {
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(loginSchema)
   });
 
-  const onSubmit = (formValues: any) => {
+  const onSubmit = (formValues: LoginFormValuesI) => {
     console.log(formValues);
   };
   return (

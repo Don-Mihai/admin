@@ -1,5 +1,4 @@
-import React from 'react';
-import styles from './Profile.css';
+import './Profile.css';
 import Header from '../../components/Header/Header';
 
 export default function Profile() {

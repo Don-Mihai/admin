@@ -1,5 +1,4 @@
-import React from 'react';
-import styles from './Catalog.css';
+import './Catalog.css';
 import Header from '../../components/Header/Header';
 
 export default function Catalog() {

@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import styles from './Users.css';
+import './Users.css';
 import Header from '../../components/Header/Header';
 import Modal from '../../modules/Modal/ui';
 import User from '../../components/User/User';
 
-import { HEADERS } from './consts';
+import { HEADERS, ROLES } from './consts';
 import { useUsers } from './model';
 import { UserI } from '@/redux/User/types';
 
@@ -26,10 +25,10 @@ export default function Users() {
           </div>
         </div>
         <nav className="users__link">
-          <button onClick={() => setActiveRole('admins')} className={activeRole === 'admins' ? 'link__active' : 'link'}>
+          <button onClick={() => setActiveRole(ROLES.ADMINS)} className={activeRole === ROLES.ADMINS ? 'link__active' : 'link'}>
             Admins
           </button>
-          <button onClick={() => setActiveRole('clients')} className={activeRole === 'clients' ? 'link__active' : 'link'}>
+          <button onClick={() => setActiveRole(ROLES.CLIENTS)} className={activeRole === ROLES.CLIENTS ? 'link__active' : 'link'}>
             Clients
           </button>
         </nav>
@@ -61,18 +60,7 @@ export default function Users() {
 
                 <div>
                   {filteredUsers.length > 0 ? (
-                    filteredUsers.map((user: UserI) => (
-                      <User
-                        key={user.id}
-                        id={user.id}
-                        name={user.name}
-                        email={user.email}
-                        role={user.role}
-                        created={user.created}
-                        status={user.status}
-                        onDelete={deleteUsers}
-                      />
-                    ))
+                    filteredUsers.map((user: UserI) => <User key={user.id} user={user} onDelete={deleteUsers} />)
                   ) : (
                     <div>Пользователи не найдены</div>
                   )}

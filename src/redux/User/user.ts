@@ -1,9 +1,12 @@
+import { API_URL } from '@/utiles/api';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { API_URL } from '../utiles/api';
-import { toast } from 'react-toastify';
 
-const initialState = {
+import { toast } from 'react-toastify';
+import { StateI, UserI } from './types';
+import { LocalUserI } from '@/modules/Modal/model';
+
+const initialState: StateI = {
   users: []
 };
 
@@ -16,7 +19,7 @@ export const fetchUsers = createAsyncThunk('user/fetchUsers', async () => {
   }
 });
 
-export const createUsers = createAsyncThunk('user/createUsers', async (formValues) => {
+export const createUsers = createAsyncThunk('user/createUsers', async (formValues: LocalUserI) => {
   try {
     const response = await axios.post(`${API_URL}/users`, formValues);
     return response.data;
@@ -25,7 +28,7 @@ export const createUsers = createAsyncThunk('user/createUsers', async (formValue
   }
 });
 
-export const deleteUsers = createAsyncThunk('user/deleteUsers', async (userId) => {
+export const deleteUsers = createAsyncThunk('user/deleteUsers', async (userId: string) => {
   try {
     const response = await axios.delete(`${API_URL}/users/${userId}`);
     return response.data;

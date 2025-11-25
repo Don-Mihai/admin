@@ -1,18 +1,15 @@
 // components/User/User.jsx
+import { UserI } from '@/redux/User/types';
 import styles from './User.css';
 import React from 'react';
 
 interface Props {
-  id: string;
-  name: string;
-  email: string;
-  role: string;
-  created: string;
-  status: string;
+  user: UserI;
   onDelete: (id: string) => void;
 }
 
-export default function User({ id, name, email, role, created, status, onDelete }: Props) {
+export default function User({ user, onDelete }: Props) {
+  const { id, name, email, role, created, status } = user;
   return (
     <div className="table__body">
       <div className="header__name">

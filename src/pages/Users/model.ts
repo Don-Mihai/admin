@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { createUsers, deleteUsers, fetchUsers } from '../../redux/user';
+
 import { UserI } from '@/redux/User/types';
-import { RootState } from '@/redux/store';
+import { AppDispatch, RootState } from '@/redux/store';
+import { createUsers, deleteUsers, fetchUsers } from '@/redux/User/user';
+import { ROLES, RolesType } from './consts';
+import { LocalUserI } from '@/modules/Modal/model';
 
 export const useUsers = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const users = useSelector((state: RootState) => state.user.users);
-  const [serchText, setSerchText] = useState('');
-  const [activeRole, setActiveRole] = useState('clients');
+  const [serchText, setSerchText] = useState<string>('');
+  const [activeRole, setActiveRole] = useState<RolesType>(ROLES.CLIENTS);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
-  const handleSearch = (e) => {
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSerchText(e.target.value);
   };
 
@@ -22,7 +25,8 @@ export const useUsers = () => {
     let isMatch = false;
 
     keys.forEach((key) => {
-      if (user[key].includes(serchText)) {
+      // @ts-ignore
+      if (user[key as keyof UserI].includes(serchText)) {
         isMatch = true;
       }
     });
@@ -35,8 +39,6 @@ export const useUsers = () => {
 
     return isMatch;
   });
-
-  const sortedUsers = filteredUsers.sort((user1, user2) => {});
 
   useEffect(() => {
     dispatch(fetchUsers());
@@ -51,7 +53,7 @@ export const useUsers = () => {
     setIsModalOpen(false);
   };
 
-  const handleCreateUsers = (formValues: UserI) => {
+  const handleCreateUsers = (formValues: LocalUserI) => {
     dispatch(createUsers(formValues));
   };
 

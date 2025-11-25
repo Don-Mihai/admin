@@ -1,14 +1,14 @@
 import React from 'react';
 import './styles.css';
-import { useModalForm } from './model';
+import { LocalUserI, useModalForm } from './model';
 
 interface Props {
-  onCreateUser: (formValues: any) => void;
+  onCreateUser: (formValues: LocalUserI) => void;
   onClose: () => void;
 }
 
 function Modal({ onClose, onCreateUser }: Props) {
-  const { register, handleSubmit, formState, onSubmit } = useModalForm(onClose, onCreateUser);
+  const { register, handleSubmit, formState, onSubmit } = useModalForm(onCreateUser, onClose);
 
   return (
     <div className="modal-overlay">
