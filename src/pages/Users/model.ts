@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { createUsers, deleteUsers, fetchUsers } from '../../redux/user';
+import { UserI } from '@/redux/User/types';
+import { RootState } from '@/redux/store';
 
 export const useUsers = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const users = useSelector((state) => state.user.users);
+  const users = useSelector((state: RootState) => state.user.users);
   const [serchText, setSerchText] = useState('');
   const [activeRole, setActiveRole] = useState('clients');
 
@@ -15,7 +17,7 @@ export const useUsers = () => {
     setSerchText(e.target.value);
   };
 
-  const filteredUsers = users.filter((user) => {
+  const filteredUsers = users.filter((user: UserI) => {
     const keys = Object.keys(user);
     let isMatch = false;
 
@@ -49,11 +51,11 @@ export const useUsers = () => {
     setIsModalOpen(false);
   };
 
-  const handleCreateUsers = (formValues) => {
+  const handleCreateUsers = (formValues: UserI) => {
     dispatch(createUsers(formValues));
   };
 
-  const handleDeleteUsers = (userId) => {
+  const handleDeleteUsers = (userId: string) => {
     dispatch(deleteUsers(userId));
   };
 

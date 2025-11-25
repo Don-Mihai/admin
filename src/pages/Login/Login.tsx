@@ -11,7 +11,7 @@ const Login = () => {
     resolver: yupResolver(loginSchema)
   });
 
-  const onSubmit = (formValues) => {
+  const onSubmit = (formValues: any) => {
     console.log(formValues);
   };
   return (

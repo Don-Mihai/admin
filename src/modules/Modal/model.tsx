@@ -3,12 +3,12 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
 
-export const useModalForm = (onCreateUser, onClose) => {
+export const useModalForm = (onCreateUser: (formValues: any) => void, onClose: () => void) => {
   const { register, handleSubmit, formState, reset } = useForm({
     resolver: yupResolver(addUser)
   });
 
-  const onSubmit = async (formValues) => {
+  const onSubmit = async (formValues: any) => {
     try {
       onCreateUser(formValues);
       reset();

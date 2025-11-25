@@ -2,7 +2,12 @@ import React from 'react';
 import './styles.css';
 import { useModalForm } from './model';
 
-function Modal({ onClose, onCreateUser }) {
+interface Props {
+  onCreateUser: (formValues: any) => void;
+  onClose: () => void;
+}
+
+function Modal({ onClose, onCreateUser }: Props) {
   const { register, handleSubmit, formState, onSubmit } = useModalForm(onClose, onCreateUser);
 
   return (
