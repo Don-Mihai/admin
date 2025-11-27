@@ -16,5 +16,103 @@
       "email": "kazna@gexa.ru",
       "name": "leonardo"
     }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "image": "./ps.png",
+      "title": "PS5 DualSense",
+      "price": 150.5,
+      "stock": 544,
+      "sold": 544
+    },
+    {
+      "id": 2,
+      "image": "./sony.webp",
+      "title": "PlayStation 5",
+      "price": 750.5,
+      "stock": 584,
+      "sold": 554
+    },
+    {
+      "id": 3,
+      "image": "./pk.png",
+      "title": "Monitor",
+      "price": 450.5,
+      "stock": 544,
+      "sold": 544
+    },
+    {
+      "id": 4,
+      "image": "./iphone.png",
+      "title": "Iphone",
+      "price": 950.5,
+      "stock": 544,
+      "sold": 544
+    },
+    {
+      "id": 5,
+      "image": "./AirTag.png",
+      "title": "AirTag",
+      "price": 150.5,
+      "stock": 544,
+      "sold": 544
+    },
+    {
+      "id": 6,
+      "image": "./Credit Card Reader.png",
+      "title": "Credit Card Reader",
+      "price": 150.5,
+      "stock": 544,
+      "sold": 544
+    },
+    {
+      "id": 7,
+      "image": "./AirPods Max.png",
+      "title": "AirPods Max",
+      "price": 150.5,
+      "stock": 544,
+      "sold": 544
+    },
+    {
+      "id": 8,
+      "image": "./Fitness Tracker.png",
+      "title": "Fitness Tracker",
+      "price": 150.5,
+      "stock": 544,
+      "sold": 544
+    },
+    {
+      "id": 9,
+      "image": "./Smart Light Bulb.png",
+      "title": "Smart Light Bulb",
+      "price": 150.5,
+      "stock": 544,
+      "sold": 544
+    },
+    {
+      "id": 10,
+      "image": "./Smart Lock.png",
+      "title": "Smart Lock",
+      "price": 150.5,
+      "stock": 544,
+      "sold": 544
+    },
+    {
+      "id": 11,
+      "image": "./AirPods.png",
+      "title": "AirPods",
+      "price": 150.5,
+      "stock": 544,
+      "sold": 544
+    },
+    {
+      "id": 12,
+      "image": "./Selfie Ring Light.png",
+      "title": "Selfie Ring Light",
+      "price": 50.5,
+      "stock": 244,
+      "sold": 34
+    }
   ]
 }

@@ -1,7 +1,11 @@
 import './Catalog.css';
 import Header from '../../components/Header/Header';
+import { useProduct } from './model';
+import { ProductI } from '@/redux/Product/type';
 
 export default function Catalog() {
+  const { products } = useProduct();
+
   return (
     <div>
       <div className="wrapper">
@@ -48,185 +52,25 @@ export default function Catalog() {
           </nav>
           <div className="product__container">
             <div className="products__cards">
-              <div className="products__img">
-                <img src="./ps.png" alt="" className="img" />
-              </div>
-              <p className="products__title">PS5 DualSense</p>
-              <p className="products__price">$150.50</p>
-              <div className="products__bottom">
-                <p className="products__stock">
-                  Stock: <span className="bold">544</span>
-                </p>
-                <p className="products__sold">
-                  Sold: <span className="bold">544</span>
-                </p>
-              </div>
-            </div>
-            <div className="products__cards">
-              <div className="products__img">
-                <img src="./sony.webp" alt="" className="img" />
-              </div>
-              <p className="products__title">PlayStation 5</p>
-              <p className="products__price">$750.50</p>
-              <div className="products__bottom">
-                <p className="products__stock">
-                  Stock: <span className="bold">584</span>
-                </p>
-                <p className="products__sold">
-                  Sold: <span className="bold">554</span>
-                </p>
-              </div>
-            </div>
-            <div className="products__cards">
-              <div className="products__img">
-                <img src="./pk.png" alt="" className="img" />
-              </div>
-              <p className="products__title">Monitor</p>
-              <p className="products__price">$450.50</p>
-              <div className="products__bottom">
-                <p className="products__stock">
-                  Stock: <span className="bold">544</span>
-                </p>
-                <p className="products__sold">
-                  Sold: <span className="bold">544</span>
-                </p>
-              </div>
-            </div>
-            <div className="products__cards">
-              <div className="products__img">
-                <img src="./iphone.png" alt="" className="img" />
-              </div>
-              <p className="products__title">Iphone</p>
-              <p className="products__price">$950.50</p>
-              <div className="products__bottom">
-                <p className="products__stock">
-                  Stock: <span className="bold">544</span>
-                </p>
-                <p className="products__sold">
-                  Sold: <span className="bold">544</span>
-                </p>
-              </div>
-            </div>
-            <div className="products__cards">
-              <div className="products__img">
-                <img src="./AirTag.png" alt="" className="img" />
-              </div>
-              <p className="products__title">AirTag</p>
-              <p className="products__price">$150.50</p>
-              <div className="products__bottom">
-                <p className="products__stock">
-                  Stock: <span className="bold">544</span>
-                </p>
-                <p className="products__sold">
-                  Sold: <span className="bold">544</span>
-                </p>
-              </div>
-            </div>
-            <div className="products__cards">
-              <div className="products__img">
-                <img src="./Credit Card Reader.png" alt="" className="img" />
-              </div>
-              <p className="products__title">Credit Card Reader</p>
-              <p className="products__price">$150.50</p>
-              <div className="products__bottom">
-                <p className="products__stock">
-                  Stock: <span className="bold">544</span>
-                </p>
-                <p className="products__sold">
-                  Sold: <span className="bold">544</span>
-                </p>
-              </div>
-            </div>
-            <div className="products__cards">
-              <div className="products__img">
-                <img src="./AirPods Max.png" alt="" className="img" />
-              </div>
-              <p className="products__title">AirPods Max</p>
-              <p className="products__price">$150.50</p>
-              <div className="products__bottom">
-                <p className="products__stock">
-                  Stock: <span className="bold">544</span>
-                </p>
-                <p className="products__sold">
-                  Sold: <span className="bold">544</span>
-                </p>
-              </div>
-            </div>
-
-            <div className="products__cards">
-              <div className="products__img">
-                <img src="./Fitness Tracker.png" alt="" className="img" />
-              </div>
-              <p className="products__title">Fitness Tracker</p>
-              <p className="products__price">$150.50</p>
-              <div className="products__bottom">
-                <p className="products__stock">
-                  Stock: <span className="bold">544</span>
-                </p>
-                <p className="products__sold">
-                  Sold: <span className="bold">544</span>
-                </p>
-              </div>
-            </div>
-            <div className="products__cards">
-              <div className="products__img">
-                <img src="./Smart Light Bulb.png" alt="" className="img" />
-              </div>
-              <p className="products__title">Smart Light Bulb</p>
-              <p className="products__price">$150.50</p>
-              <div className="products__bottom">
-                <p className="products__stock">
-                  Stock: <span className="bold">544</span>
-                </p>
-                <p className="products__sold">
-                  Sold: <span className="bold">544</span>
-                </p>
-              </div>
-            </div>
-            <div className="products__cards">
-              <div className="products__img">
-                <img src="./Smart Lock.png" alt="" className="img" />
-              </div>
-              <p className="products__title">Smart Lock</p>
-              <p className="products__price">$150.50</p>
-              <div className="products__bottom">
-                <p className="products__stock">
-                  Stock: <span className="bold">544</span>
-                </p>
-                <p className="products__sold">
-                  Sold: <span className="bold">544</span>
-                </p>
-              </div>
-            </div>
-            <div className="products__cards">
-              <div className="products__img">
-                <img src="./AirPods.png" alt="" className="img" />
-              </div>
-              <p className="products__title">AirPods</p>
-              <p className="products__price">$150.50</p>
-              <div className="products__bottom">
-                <p className="products__stock">
-                  Stock: <span className="bold">544</span>
-                </p>
-                <p className="products__sold">
-                  Sold: <span className="bold">544</span>
-                </p>
-              </div>
-            </div>
-            <div className="products__cards">
-              <div className="products__img">
-                <img src="./Selfie Ring Light.png" alt="" className="img" />
-              </div>
-              <p className="products__title">Selfie Ring Light</p>
-              <p className="products__price">$50.50</p>
-              <div className="products__bottom">
-                <p className="products__stock">
-                  Stock: <span className="bold">244</span>
-                </p>
-                <p className="products__sold">
-                  Sold: <span className="bold">34</span>
-                </p>
-              </div>
+              {products.map((product: ProductI) => {
+                return (
+                  <div key={product.id} className="product-card">
+                    <div className="products__img">
+                      <img src={product.image} alt={product.title} className="img" />
+                    </div>
+                    <p className="products__title">{product.title}</p>
+                    <p className="products__price">${product.price}</p>
+                    <div className="products__bottom">
+                      <p className="products__stock">
+                        Stock: <span className="bold">{product.stock}</span>
+                      </p>
+                      <p className="products__sold">
+                        Sold: <span className="bold">{product.sold}</span>
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>

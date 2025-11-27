@@ -125,18 +125,19 @@
 }
 .products__cards {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
   align-items: center;
   border: 1px solid rgb(177, 177, 177);
   border-radius: var(--border-radius-container);
   padding: 5px 0;
 }
 
-.products__cards:hover {
+.product-card:hover {
   background-color: #8687881f;
 }
 
-.products__cards:hover .products__img {
+.product-card:hover .products__img {
   background-color: white;
 }
 
