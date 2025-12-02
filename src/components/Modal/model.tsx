@@ -2,11 +2,9 @@ import { addUser } from '../../utiles/validation';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
-import { UserI } from '@/redux/User/types';
+import { LocalUserI, UserI } from '@/redux/User/types';
 import { MODAL_MODE } from './ui';
 import { useEffect } from 'react';
-
-export type LocalUserI = Omit<UserI, 'id'>;
 
 export const useModalForm = (
   onClose: () => void,
@@ -25,14 +23,15 @@ export const useModalForm = (
         name: user.name,
         email: user.email,
         role: user.role,
-        created: user.created instanceof Date ? user.created : new Date(user.created),
+        created: user.created.split('T')[0],
         status: user.status
       });
     }
   }, [mode, user, reset]);
 
-  const onSubmit = async (formValues: LocalUserI | UserI) => {
-    if (!('id' in formValues) && mode === MODAL_MODE.CREATE) {
+  const onSubmit = async (formValues: LocalUserI | UserI, userId?: string) => {
+    console.log(formValues);
+    if (!userId && mode === MODAL_MODE.CREATE) {
       try {
         onCreateUser?.(formValues);
         reset();
@@ -45,9 +44,9 @@ export const useModalForm = (
       }
     }
 
-    if ('id' in formValues && mode === MODAL_MODE.EDIT) {
+    if (userId && mode === MODAL_MODE.EDIT) {
       try {
-        onEditUser?.(formValues);
+        onEditUser?.({ ...formValues, id: userId });
         reset();
         alert('Пользователь редактирован');
         console.log(formValues);

@@ -10,6 +10,7 @@ import Modal, { MODAL_MODE } from '@/components/Modal/ui';
 
 export default function Users() {
   const { isModalOpen, filteredUsers, handleSearch, createUsers, editUser, deleteUsers, openModal, closeModal, setActiveRole, activeRole } = useUsers();
+
   return (
     <div>
       <Header />

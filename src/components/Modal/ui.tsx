@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.css';
-import { LocalUserI, useModalForm } from './model';
-import { UserI } from '@/redux/User/types';
+import { useModalForm } from './model';
+import { LocalUserI, UserI } from '@/redux/User/types';
 import { createPortal } from 'react-dom';
 
 export enum MODAL_MODE {
@@ -20,12 +20,13 @@ interface Props {
 
 function Modal({ onClose, onCreateUser, onEditUser, title, mode, user }: Props) {
   const { register, handleSubmit, formState, onSubmit } = useModalForm(onClose, mode, user, onCreateUser, onEditUser);
+  console.log(formState.defaultValues);
 
   return createPortal(
     <div className="modal-overlay">
       <div className="modal-content">
         <h2>{title}</h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit((formValues) => onSubmit(formValues, user?.id))}>
           <div className="modal__content">
             <input {...register('name')} type="text" placeholder="Имя пользователя" className="name" />
             <p className="error">{formState.errors.name?.message}</p>

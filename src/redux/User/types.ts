@@ -1,13 +1,13 @@
 export interface UserI {
   id: string;
   status: string;
-  created: string | Date;
+  created: string;
   role: string;
   email: string;
   name: string;
 }
 
-export type LocalUserI = Omit<UserI, 'id'>;
+export interface LocalUserI extends Omit<UserI, 'id'> {}
 
 export interface StateI {
   users: UserI[];

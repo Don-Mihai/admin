@@ -19,8 +19,12 @@ export const fetchUsers = createAsyncThunk('user/fetchUsers', async () => {
 });
 
 export const createUsers = createAsyncThunk('user/createUsers', async (formValues: LocalUserI) => {
+  const payload = {
+    ...formValues,
+    created: formValues.created
+  };
   try {
-    const response = await axios.post(`${API_URL}/users`, formValues);
+    const response = await axios.post(`${API_URL}/users`, payload);
     return response.data;
   } catch (err) {
     console.error('Ошибка при загрузке пользователей:', err);

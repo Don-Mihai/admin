@@ -1,11 +1,11 @@
 // utils/validation.js
-import { boolean, object, string, date } from 'yup';
+import { boolean, object, string } from 'yup';
 
 export const addUser = object({
   name: string().required('Имя обязательно'),
   email: string().email('Некорректный email').required('Email обязателен'),
   role: string().required('Роль обязательна'),
-  created: date().required('Дата создания обязательна'),
+  created: string().required('Дата создания обязательна'),
   status: string().required('Статус обязателен')
 });
 
