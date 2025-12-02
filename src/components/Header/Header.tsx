@@ -1,8 +1,11 @@
 import React from 'react';
 import './Header.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { ROUTES } from '@/routes/types';
 
 export default function Header() {
+  const location = useLocation();
+
   return (
     <div>
       <div className="wrapper">
@@ -11,18 +14,18 @@ export default function Header() {
             Ecomora
           </Link>
           <nav className="nav">
-            <Link to="/dachbord" className="link__active">
+            <Link to={ROUTES.DASHBOARD} className={location.pathname === ROUTES.DASHBOARD ? 'link__active' : 'link'}>
               Dashboard
             </Link>
-            <Link to="/catalog" className="link">
+            <Link to={ROUTES.CATALOG} className={location.pathname === ROUTES.CATALOG ? 'link__active' : 'link'}>
               Products
             </Link>
 
-            <Link to="/users" className="link">
+            <Link to={ROUTES.USERS} className={location.pathname === ROUTES.USERS ? 'link__active' : 'link'}>
               Users
             </Link>
           </nav>
-          <Link to="/profile" className="profile">
+          <Link to={ROUTES.PROFILE} className="profile">
             <img src="./img.png" alt="Profile" />
             <p>Adriano Darvin</p>
             <img className="profile__img" src="./care.svg" alt="Dropdown" />

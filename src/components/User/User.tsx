@@ -1,15 +1,22 @@
 // components/User/User.jsx
 import { UserI } from '@/redux/User/types';
-import styles from './User.css';
-import React from 'react';
+import './User.css';
+import React, { useState } from 'react';
+import Modal, { MODAL_MODE } from '../Modal/ui';
 
 interface Props {
   user: UserI;
   onDelete: (id: string) => void;
+  onEdit: (user: UserI) => void;
 }
 
-export default function User({ user, onDelete }: Props) {
+export default function User({ user, onDelete, onEdit }: Props) {
   const { id, name, email, role, created, status } = user;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const closeModal = () => setIsModalOpen(false);
+  const openModal = () => setIsModalOpen(true);
+
   return (
     <div className="table__body">
       <div className="header__name">
@@ -30,7 +37,11 @@ export default function User({ user, onDelete }: Props) {
       <div className="header__name">
         <p className={`Status_a ${status?.toLowerCase() || 'active'}`}>{status}</p>
       </div>
-      <img onClick={() => onDelete(id)} className="trash" src="./del.svg" alt="Удалить пользователя" />
+      <div className="actions">
+        <img onClick={openModal} className="user__trash" src="./edit.svg" alt="Редактировать пользователя" />
+        <img onClick={() => onDelete(id)} className="user__trash" src="./del.svg" alt="Удалить пользователя" />
+      </div>
+      {isModalOpen && <Modal title="Редакитрование пользователя" user={user} onEditUser={onEdit} onClose={closeModal} mode={MODAL_MODE.EDIT} />}
     </div>
   );
 }

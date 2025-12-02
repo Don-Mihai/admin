@@ -3,8 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 import { toast } from 'react-toastify';
-import { StateI, UserI } from './types';
-import { LocalUserI } from '@/modules/Modal/model';
+import { LocalUserI, StateI, UserI } from './types';
 
 const initialState: StateI = {
   users: []
@@ -38,6 +37,15 @@ export const deleteUsers = createAsyncThunk('user/deleteUsers', async (userId: s
   }
 });
 
+export const editUsers = createAsyncThunk('user/editUsers', async (formValues: UserI) => {
+  try {
+    const response = await axios.put(`${API_URL}/users/${formValues.id}`, formValues);
+    return response.data;
+  } catch (err) {
+    console.error('Ошибка при редактировании пользователей:', err);
+  }
+});
+
 export const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -51,6 +59,9 @@ export const userSlice = createSlice({
     });
     builder.addCase(deleteUsers.fulfilled, (state, action) => {
       state.users = state.users.filter((user) => user.id !== action.payload.id);
+    });
+    builder.addCase(editUsers.fulfilled, (state, action) => {
+      state.users = state.users.map((user) => (user.id === action.payload.id ? action.payload : user));
     });
   }
 });

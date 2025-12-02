@@ -346,22 +346,29 @@ button:hover {
   }
 }
 
-/* Улучшенная анимация для кнопки удаления */
-.trash {
+.actions {
   position: absolute;
   right: 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Улучшенная анимация для кнопки удаления */
+.user__trash {
   cursor: pointer;
   transition: all 0.2s ease;
   padding: 5px;
   border-radius: 4px;
+  z-index: 1000;
 }
 
-.trash:hover {
+.user__trash:hover {
   transform: scale(1.1);
   background-color: rgba(255, 0, 0, 0.1);
   filter: brightness(0.8);
 }
 
-.trash:active {
+.user__trash:active {
   transform: scale(0.95);
 }

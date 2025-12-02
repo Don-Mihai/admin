@@ -2,11 +2,10 @@ import React, { useState, useEffect, ChangeEvent } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { UserI } from '@/redux/User/types';
+import { LocalUserI, UserI } from '@/redux/User/types';
 import { AppDispatch, RootState } from '@/redux/store';
-import { createUsers, deleteUsers, fetchUsers } from '@/redux/User/user';
+import { createUsers, deleteUsers, editUsers, fetchUsers } from '@/redux/User/user';
 import { ROLES, RolesType } from './consts';
-import { LocalUserI } from '@/modules/Modal/model';
 
 export const useUsers = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -31,11 +30,11 @@ export const useUsers = () => {
       }
     });
 
-    // if (activeRole === 'admins') {
-    //   isMatch = user.role === 'admin';
-    // } else {
-    //   isMatch = user.role === 'client';
-    // }
+    if (activeRole === 'admins') {
+      isMatch = user.role === 'admin';
+    } else {
+      isMatch = user.role === 'client';
+    }
 
     return isMatch;
   });
@@ -61,6 +60,10 @@ export const useUsers = () => {
     dispatch(deleteUsers(userId));
   };
 
+  const handleEditUser = (formValues: UserI) => {
+    dispatch(editUsers(formValues));
+  };
+
   return {
     isModalOpen,
     filteredUsers,
@@ -70,6 +73,7 @@ export const useUsers = () => {
     setActiveRole,
     activeRole,
     createUsers: handleCreateUsers,
-    deleteUsers: handleDeleteUsers
+    deleteUsers: handleDeleteUsers,
+    editUser: handleEditUser
   };
 };

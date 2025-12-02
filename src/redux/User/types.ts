@@ -7,6 +7,8 @@ export interface UserI {
   name: string;
 }
 
+export type LocalUserI = Omit<UserI, 'id'>;
+
 export interface StateI {
   users: UserI[];
 }

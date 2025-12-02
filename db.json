@@ -1,20 +1,28 @@
 {
   "users": [
     {
-      "id": "9a15",
-      "status": "dsf",
-      "created": "1111-11-10T21:29:43.000Z",
-      "role": "client",
-      "email": "asdf@mail.ru",
-      "name": "asdf"
-    },
-    {
       "id": "4d70",
       "status": "student",
       "created": "1111-11-10T21:29:43.000Z",
       "role": "client",
       "email": "kazna@gexa.ru",
       "name": "leonardo"
+    },
+    {
+      "id": "69bc",
+      "status": "student",
+      "created": "2025-11-06T21:00:00.000Z",
+      "role": "admin",
+      "email": "asfasdfsdf@mail.ru",
+      "name": "Carl"
+    },
+    {
+      "id": "10d3",
+      "status": "student",
+      "created": "2025-11-11T21:00:00.000Z",
+      "role": "admin",
+      "email": "aa@gmail.com",
+      "name": "dicaprio"
     }
   ],
   "products": [

@@ -1,19 +1,30 @@
 import React from 'react';
 import './styles.css';
 import { LocalUserI, useModalForm } from './model';
+import { UserI } from '@/redux/User/types';
+import { createPortal } from 'react-dom';
 
-interface Props {
-  onCreateUser: (formValues: LocalUserI) => void;
-  onClose: () => void;
+export enum MODAL_MODE {
+  CREATE = 'create',
+  EDIT = 'edit'
 }
 
-function Modal({ onClose, onCreateUser }: Props) {
-  const { register, handleSubmit, formState, onSubmit } = useModalForm(onCreateUser, onClose);
+interface Props {
+  onCreateUser?: (formValues: LocalUserI) => void;
+  onEditUser?: (formValues: UserI) => void;
+  onClose: () => void;
+  title: string;
+  mode: MODAL_MODE;
+  user?: UserI;
+}
 
-  return (
+function Modal({ onClose, onCreateUser, onEditUser, title, mode, user }: Props) {
+  const { register, handleSubmit, formState, onSubmit } = useModalForm(onClose, mode, user, onCreateUser, onEditUser);
+
+  return createPortal(
     <div className="modal-overlay">
       <div className="modal-content">
-        <h2>Добавить пользователя</h2>
+        <h2>{title}</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="modal__content">
             <input {...register('name')} type="text" placeholder="Имя пользователя" className="name" />
@@ -33,14 +44,15 @@ function Modal({ onClose, onCreateUser }: Props) {
           </div>
 
           <div className="modal-actions">
-            <button type="submit">Добавить</button>
+            <button type="submit">Сохранить</button>
             <button type="button" onClick={onClose}>
               Отмена
             </button>
           </div>
         </form>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 
