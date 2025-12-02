@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import './Header.css';
 import { Link, useLocation } from 'react-router-dom';
 import { ROUTES } from '@/routes/types';
 
-export default function Header() {
+export default memo(function Header() {
   const location = useLocation();
 
   return (
@@ -26,7 +26,11 @@ export default function Header() {
             </Link>
           </nav>
           <Link to={ROUTES.PROFILE} className="profile">
-            <img src="./img.png" alt="Profile" />
+            <picture>
+              {/* <source srcSet="./imgSmoll.png" media="(max-width: 768px)" />
+              <source srcSet="./imgMedium.png" media="(max-width: 1024px)" /> */}
+              <img src="./img.png" alt="Profile" />
+            </picture>
             <p>Adriano Darvin</p>
             <img className="profile__img" src="./care.svg" alt="Dropdown" />
           </Link>
@@ -34,4 +38,4 @@ export default function Header() {
       </div>
     </div>
   );
-}
+});

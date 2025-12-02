@@ -51,6 +51,10 @@ button:hover {
   margin-top: 60px;
   margin-bottom: 20px;
 }
+
+.link__active:hover {
+  background-color: rgba(199, 198, 198, 0.418);
+}
 .users__container {
   background-color: rgba(199, 198, 198, 0.418);
   border-radius: var(--border-radius-container);

@@ -1,19 +1,19 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-import Header from '../components/Header/Header'; // путь к вашему Header
-import Users from '../pages/Users/Users';
-import Profile from '../pages/Profile/Profile';
-import Daсhbord from '../pages/Dachbord/Dachbord';
-import Catalog from '../pages/Catalog/Catalog';
-import Register from '../pages/Register/Register';
-import Login from '../pages/Login/Login';
+import { memo, lazy } from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { store } from '../redux/store';
 import { Provider } from 'react-redux';
 import { ROUTES } from './types';
 
+const Profile = lazy(() => import('../pages/Profile/Profile'));
+const Dashbord = lazy(() => import('../pages/Dachbord/Dachbord'));
+const Catalog = lazy(() => import('../pages/Catalog/Catalog'));
+const Register = lazy(() => import('../pages/Register/Register'));
+const Login = lazy(() => import('../pages/Login/Login'));
+const Users = lazy(() => import('../pages/Users/Users'));
+
 // Основной компонент приложения
-function App() {
+export default memo(function App() {
   return (
     <Provider store={store}>
       <GoogleOAuthProvider clientId="<your_client_id>">
@@ -24,7 +24,7 @@ function App() {
                 <Route path="/" element={<Profile />} />
                 <Route path={ROUTES.LOGIN} element={<Login />} />
                 <Route path={ROUTES.REGISTER} element={<Register />} />
-                <Route path={ROUTES.DASHBOARD} element={<Daсhbord />} />
+                <Route path={ROUTES.DASHBOARD} element={<Dashbord />} />
                 <Route path={ROUTES.USERS} element={<Users />} />
                 <Route path={ROUTES.PROFILE} element={<Profile />} />
                 <Route path={ROUTES.CATALOG} element={<Catalog />} />
@@ -35,5 +35,4 @@ function App() {
       </GoogleOAuthProvider>
     </Provider>
   );
-}
-export default App;
+});

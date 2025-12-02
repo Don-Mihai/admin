@@ -1,7 +1,8 @@
 import './Dachbord.css';
 import Header from '../../components/Header/Header';
+import { memo } from 'react';
 
-export default function Dachbord() {
+export default memo(function Dachbord() {
   return (
     <div>
       <Header />
@@ -29,4 +30,4 @@ export default function Dachbord() {
       </section>
     </div>
   );
-}
+});

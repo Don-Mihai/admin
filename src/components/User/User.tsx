@@ -1,7 +1,7 @@
 // components/User/User.jsx
 import { UserI } from '@/redux/User/types';
 import './User.css';
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import Modal, { MODAL_MODE } from '../Modal/ui';
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
   onEdit: (user: UserI) => void;
 }
 
-export default function User({ user, onDelete, onEdit }: Props) {
+export default memo(function User({ user, onDelete, onEdit }: Props) {
   const { id, name, email, role, created, status } = user;
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -44,4 +44,4 @@ export default function User({ user, onDelete, onEdit }: Props) {
       {isModalOpen && <Modal title="Редакитрование пользователя" user={user} onEditUser={onEdit} onClose={closeModal} mode={MODAL_MODE.EDIT} />}
     </div>
   );
-}
+});

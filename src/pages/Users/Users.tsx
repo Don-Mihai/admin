@@ -7,8 +7,9 @@ import { HEADERS, ROLES } from './consts';
 import { useUsers } from './model';
 import { UserI } from '@/redux/User/types';
 import Modal, { MODAL_MODE } from '@/components/Modal/ui';
+import { memo } from 'react';
 
-export default function Users() {
+export default memo(function Users() {
   const { isModalOpen, filteredUsers, handleSearch, createUsers, editUser, deleteUsers, openModal, closeModal, setActiveRole, activeRole } = useUsers();
 
   return (
@@ -73,4 +74,4 @@ export default function Users() {
       </section>
     </div>
   );
-}
+});

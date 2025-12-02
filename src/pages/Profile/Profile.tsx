@@ -1,7 +1,8 @@
 import './Profile.css';
 import Header from '../../components/Header/Header';
+import { memo } from 'react';
 
-export default function Profile() {
+export default memo(function Profile() {
   return (
     <div>
       <div className="wrapper">
@@ -460,4 +461,4 @@ export default function Profile() {
       </div>
     </div>
   );
-}
+});

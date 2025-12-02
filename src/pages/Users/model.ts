@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import React, { useState, useEffect, ChangeEvent, useCallback, useMemo } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -19,25 +19,29 @@ export const useUsers = () => {
     setSerchText(e.target.value);
   };
 
-  const filteredUsers = users.filter((user: UserI) => {
-    const keys = Object.keys(user);
-    let isMatch = false;
+  const filteredUsers = useMemo(
+    () =>
+      users.filter((user: UserI) => {
+        const keys = Object.keys(user);
+        let isMatch = false;
 
-    keys.forEach((key) => {
-      // @ts-ignore
-      if (user[key as keyof UserI].includes(serchText)) {
-        isMatch = true;
-      }
-    });
+        keys.forEach((key) => {
+          // @ts-ignore
+          if (user[key as keyof UserI].includes(serchText)) {
+            isMatch = true;
+          }
+        });
 
-    if (activeRole === 'admins') {
-      isMatch = user.role === 'admin';
-    } else {
-      isMatch = user.role === 'client';
-    }
+        if (activeRole === 'admins') {
+          isMatch = user.role === 'admin';
+        } else {
+          isMatch = user.role === 'client';
+        }
 
-    return isMatch;
-  });
+        return isMatch;
+      }),
+    [activeRole, serchText, users]
+  );
 
   useEffect(() => {
     dispatch(fetchUsers());
@@ -58,13 +62,13 @@ export const useUsers = () => {
     dispatch(createUsers(formValues));
   };
 
-  const handleDeleteUsers = (userId: string) => {
+  const handleDeleteUsers = useCallback((userId: string) => {
     dispatch(deleteUsers(userId));
-  };
+  }, []);
 
-  const handleEditUser = (formValues: UserI) => {
+  const handleEditUser = useCallback((formValues: UserI) => {
     dispatch(editUsers(formValues));
-  };
+  }, []);
 
   return {
     isModalOpen,

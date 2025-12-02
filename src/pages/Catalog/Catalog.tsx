@@ -2,8 +2,9 @@ import './Catalog.css';
 import Header from '../../components/Header/Header';
 import { useProduct } from './model';
 import { ProductI } from '@/redux/Product/type';
+import { memo } from 'react';
 
-export default function Catalog() {
+export default memo(function Catalog() {
   const { products } = useProduct();
 
   return (
@@ -75,4 +76,4 @@ export default function Catalog() {
       </section>
     </div>
   );
-}
+});
