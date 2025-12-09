@@ -1,24 +1,30 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Socials from '../../components/Socials/Socials';
 import styles from './Login.module.css';
-import { useState } from 'react';
+
 import { loginSchema } from '../../utiles/validation';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/redux/store';
-import { createUsers } from '@/redux/User/user';
-import { LocalUserI, LoginFormValuesI } from '@/redux/User/types';
+import { loginUser } from '@/redux/User/user';
+import { LoginFormValuesI } from '@/redux/User/types';
+import { ROUTES } from '@/routes/types';
 
 const Login = () => {
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(loginSchema)
   });
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
 
   const onSubmit = async (formValues: LoginFormValuesI) => {
     console.log(formValues);
-    await dispatch(createUsers({ ...formValues, created: new Date().toISOString() } as LocalUserI));
+    const user = await dispatch(loginUser(formValues)).unwrap();
+    if (user?.id) {
+      localStorage.setItem('userId', user.id);
+      navigate(ROUTES.PROFILE);
+    }
   };
   return (
     <div className={styles.container}>

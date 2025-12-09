@@ -3,16 +3,35 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 import { toast } from 'react-toastify';
-import { LocalUserI, StateI, UserI } from './types';
+import { LocalUserI, LoginFormValuesI, StateI, UserI } from './types';
 
 const initialState: StateI = {
-  users: []
+  users: [],
+  currentUser: {} as UserI
 };
 
 export const fetchUsers = createAsyncThunk('user/fetchUsers', async () => {
   try {
     const response = await axios.get(`${API_URL}/users`);
     return response.data;
+  } catch (err) {
+    console.error('Ошибка при загрузке пользователей:', err);
+  }
+});
+
+export const fetchUserById = createAsyncThunk('user/fetchUserById', async (userId: string | null) => {
+  try {
+    const response = await axios.get(`${API_URL}/users/${userId}`);
+    return response.data;
+  } catch (err) {
+    console.error('Ошибка при загрузке пользователей:', err);
+  }
+});
+
+export const loginUser = createAsyncThunk('user/loginUser', async (formValues: LoginFormValuesI) => {
+  try {
+    const response = await axios.get(`${API_URL}/users?email=${formValues.email}&password=${formValues.password}`);
+    return response.data[0];
   } catch (err) {
     console.error('Ошибка при загрузке пользователей:', err);
   }
@@ -68,6 +87,12 @@ export const userSlice = createSlice({
     });
     builder.addCase(editUsers.fulfilled, (state, action) => {
       state.users = state.users.map((user) => (user.id === action.payload.id ? action.payload : user));
+    });
+    builder.addCase(fetchUserById.fulfilled, (state, action) => {
+      state.currentUser = action.payload;
+    });
+    builder.addCase(loginUser.fulfilled, (state, action) => {
+      state.currentUser = action.payload;
     });
   }
 });

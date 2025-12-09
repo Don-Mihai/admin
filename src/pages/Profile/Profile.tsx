@@ -1,8 +1,11 @@
 import './Profile.css';
 import Header from '../../components/Header/Header';
 import { memo } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
 
 export default memo(function Profile() {
+  const user = useSelector((state: RootState) => state.user.currentUser);
   return (
     <div>
       <div className="wrapper">
@@ -14,14 +17,10 @@ export default memo(function Profile() {
                 <img src="./img/img.png" alt="" className="user__img" />
                 <div className="user__top-top">
                   <div className="user__name-top">
-                    <p className="user__name">John</p>
-                    <div className="user__time">
-                      <img src="./img/filter.svg" alt="" className="user__time-img" />
-                      <p className="user__time-time">168/h</p>
-                    </div>
+                    <p className="user__name">{user.name}</p>
                   </div>
-                  <p className="user__dr">12.08.2000 ( 25 y.o )</p>
-                  <p className="user__email">john@gmail.com</p>
+
+                  <p className="user__email">{user.email}</p>
                   <div className="user__button">
                     <button className="user__resume">Resume</button>
                     <img className="user__button-img" src="./img/care.svg" alt="" />

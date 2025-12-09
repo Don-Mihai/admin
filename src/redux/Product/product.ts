@@ -5,7 +5,7 @@ import axios from 'axios';
 const initialState = {
   product: []
 };
-export const fetchProduct = createAsyncThunk('user/fetchProduct', async () => {
+export const fetchProduct = createAsyncThunk('product/fetchProduct', async () => {
   try {
     const response = await axios.get(`${API_URL}/products`);
     console.log(response.data);

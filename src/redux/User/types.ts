@@ -12,6 +12,7 @@ export interface LocalUserI extends Omit<UserI, 'id'> {}
 
 export interface StateI {
   users: UserI[];
+  currentUser: UserI;
 }
 
 export interface LoginFormValuesI {

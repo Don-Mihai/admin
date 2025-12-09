@@ -1,10 +1,26 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import './Header.css';
 import { Link, useLocation } from 'react-router-dom';
 import { ROUTES } from '@/routes/types';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/redux/store';
+import { fetchUserById } from '@/redux/User/user';
+import { UserI } from '@/redux/User/types';
 
 export default memo(function Header() {
   const location = useLocation();
+  const dispatch = useDispatch<AppDispatch>();
+  const [user, setUser] = useState<UserI>({} as UserI);
+
+  const fetchUser = async () => {
+    const userId = localStorage.getItem('userId');
+    const user = await dispatch(fetchUserById(userId)).unwrap();
+    setUser(user);
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
   return (
     <div>
@@ -31,7 +47,7 @@ export default memo(function Header() {
               <source srcSet="./imgMedium.png" media="(max-width: 1024px)" /> */}
               <img src="./img.png" alt="Profile" />
             </picture>
-            <p>Adriano Darvin</p>
+            <p>{user.name}</p>
             <img className="profile__img" src="./care.svg" alt="Dropdown" />
           </Link>
         </header>
