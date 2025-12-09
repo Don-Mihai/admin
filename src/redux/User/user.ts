@@ -18,7 +18,7 @@ export const fetchUsers = createAsyncThunk('user/fetchUsers', async () => {
   }
 });
 
-export const createUsers = createAsyncThunk('user/createUsers', async (formValues: LocalUserI) => {
+export const createUsers = createAsyncThunk('user/createUsers', async (formValues: LocalUserI): Promise<UserI | undefined> => {
   const payload = {
     ...formValues,
     created: formValues.created
@@ -59,7 +59,9 @@ export const userSlice = createSlice({
       state.users = action.payload;
     });
     builder.addCase(createUsers.fulfilled, (state, action) => {
-      state.users.push(action.payload);
+      if (action.payload) {
+        state.users.push(action.payload);
+      }
     });
     builder.addCase(deleteUsers.fulfilled, (state, action) => {
       state.users = state.users.filter((user) => user.id !== action.payload.id);

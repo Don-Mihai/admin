@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { memo, lazy } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { memo, lazy, ReactNode } from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { store } from '../redux/store';
 import { Provider } from 'react-redux';
@@ -12,6 +12,14 @@ const Register = lazy(() => import('../pages/Register/Register'));
 const Login = lazy(() => import('../pages/Login/Login'));
 const Users = lazy(() => import('../pages/Users/Users'));
 
+interface Props {
+  children: any;
+}
+const PrivateRoute = ({ children }: Props) => {
+  const isAuth = localStorage.getItem('userId');
+  return isAuth ? children : <Navigate to={ROUTES.LOGIN} />;
+};
+
 // Основной компонент приложения
 export default memo(function App() {
   return (
@@ -21,13 +29,49 @@ export default memo(function App() {
           <div className="app">
             <main className="main-content">
               <Routes>
-                <Route path="/" element={<Profile />} />
                 <Route path={ROUTES.LOGIN} element={<Login />} />
                 <Route path={ROUTES.REGISTER} element={<Register />} />
-                <Route path={ROUTES.DASHBOARD} element={<Dashbord />} />
-                <Route path={ROUTES.USERS} element={<Users />} />
-                <Route path={ROUTES.PROFILE} element={<Profile />} />
-                <Route path={ROUTES.CATALOG} element={<Catalog />} />
+
+                <Route
+                  path="/"
+                  element={
+                    <PrivateRoute>
+                      <Profile />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path={ROUTES.DASHBOARD}
+                  element={
+                    <PrivateRoute>
+                      <Dashbord />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path={ROUTES.USERS}
+                  element={
+                    <PrivateRoute>
+                      <Users />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path={ROUTES.PROFILE}
+                  element={
+                    <PrivateRoute>
+                      <Profile />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path={ROUTES.CATALOG}
+                  element={
+                    <PrivateRoute>
+                      <Catalog />
+                    </PrivateRoute>
+                  }
+                />
               </Routes>
             </main>
           </div>

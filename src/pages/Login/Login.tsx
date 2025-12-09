@@ -5,20 +5,20 @@ import { useState } from 'react';
 import { loginSchema } from '../../utiles/validation';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-
-interface LoginFormValuesI {
-  login: string;
-  password: string;
-  checkbox?: boolean;
-}
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/redux/store';
+import { createUsers } from '@/redux/User/user';
+import { LocalUserI, LoginFormValuesI } from '@/redux/User/types';
 
 const Login = () => {
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(loginSchema)
   });
+  const dispatch = useDispatch<AppDispatch>();
 
-  const onSubmit = (formValues: LoginFormValuesI) => {
+  const onSubmit = async (formValues: LoginFormValuesI) => {
     console.log(formValues);
+    await dispatch(createUsers({ ...formValues, created: new Date().toISOString() } as LocalUserI));
   };
   return (
     <div className={styles.container}>
@@ -30,8 +30,8 @@ const Login = () => {
         <div className={styles.form}>
           <div className={styles.inputGroup}>
             <label className={styles.label}>Логин</label>
-            <input {...register('login')} className={styles.input} placeholder="Введите логин" />
-            <p className={styles.error}>{formState.errors.login?.message}</p>
+            <input {...register('email')} className={styles.input} placeholder="Введите логин" />
+            <p className={styles.error}>{formState.errors.email?.message}</p>
           </div>
 
           <div className={styles.inputGroup}>
