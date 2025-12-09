@@ -3,9 +3,11 @@ import Header from '../../components/Header/Header';
 import { useProduct } from './model';
 import { ProductI } from '@/redux/Product/type';
 import { memo } from 'react';
+import ProductModal from '@/components/ProductModal/ui';
+import { MODAL_MODE } from '@/components/Modal/ui';
 
 export default memo(function Catalog() {
-  const { products } = useProduct();
+  const { products, isModalOpen, editingProduct, openModal, closeModal, createProduct, editProduct, openEditModal } = useProduct();
 
   return (
     <div>
@@ -20,10 +22,22 @@ export default memo(function Catalog() {
             </div>
             <div className="button__container">
               <img src="./plus.svg" alt="" className="plus" />
-              <button className="button">Add New Product</button>
+              <button className="button" onClick={openModal}>
+                Add New Product
+              </button>
             </div>
           </div>
         </div>
+        {isModalOpen && (
+          <ProductModal
+            title={editingProduct ? 'Редактирование товара' : 'Добавление товара'}
+            onCreateProduct={createProduct}
+            onEditProduct={editProduct}
+            onClose={closeModal}
+            mode={editingProduct ? MODAL_MODE.EDIT : MODAL_MODE.CREATE}
+            product={editingProduct}
+          />
+        )}
         <nav className="product">
           <a href="" className="tovari__active">
             All products
@@ -54,7 +68,7 @@ export default memo(function Catalog() {
           <div className="products__cards">
             {products.map((product: ProductI) => {
               return (
-                <div key={product.id} className="product-card">
+                <div key={product.id} className="product-card" onClick={() => openEditModal(product)} style={{ cursor: 'pointer' }}>
                   <div className="products__img">
                     <img src={product.image} alt={product.title} className="img" />
                   </div>

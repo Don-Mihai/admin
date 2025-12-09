@@ -1,5 +1,5 @@
 // utils/validation.js
-import { boolean, object, ref, string } from 'yup';
+import { boolean, number, object, ref, string } from 'yup';
 
 export const addUser = object({
   name: string().required('Имя обязательно'),
@@ -22,4 +22,18 @@ export const registerSchema = object({
   repeatPassword: string()
     .required('Подтверждение пароля обязательно')
     .oneOf([ref('password')], 'Пароли не совпадают')
+});
+
+export const addProduct = object({
+  image: string().required('Изображение обязательно'),
+  title: string().required('Название товара обязательно'),
+  price: number().positive('Цена должна быть положительным числом').required('Цена обязательна'),
+  stock: number()
+    .integer('Количество на складе должно быть целым числом')
+    .min(0, 'Количество на складе не может быть отрицательным')
+    .required('Количество на складе обязательно'),
+  sold: number()
+    .integer('Количество проданных должно быть целым числом')
+    .min(0, 'Количество проданных не может быть отрицательным')
+    .required('Количество проданных обязательно')
 });
