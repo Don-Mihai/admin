@@ -12,11 +12,13 @@ const initialState: ProductState = {
   product: []
 };
 
+const URL = `http://localhost:5005/products`;
+
 export interface LocalProductI extends Omit<ProductI, 'id'> {}
 
 export const fetchProduct = createAsyncThunk('product/fetchProduct', async () => {
   try {
-    const response = await axios.get(`${API_URL}/products`);
+    const response = await axios.get(`${URL}`);
     console.log(response.data);
     return response.data;
   } catch (err) {
@@ -26,7 +28,7 @@ export const fetchProduct = createAsyncThunk('product/fetchProduct', async () =>
 
 export const createProduct = createAsyncThunk('product/createProduct', async (formValues: LocalProductI): Promise<ProductI | undefined> => {
   try {
-    const response = await axios.post(`${API_URL}/products`, formValues);
+    const response = await axios.post(`${URL}`, formValues);
     toast.success('Товар успешно добавлен');
     return response.data;
   } catch (err) {
@@ -37,7 +39,7 @@ export const createProduct = createAsyncThunk('product/createProduct', async (fo
 
 export const editProduct = createAsyncThunk('product/editProduct', async (formValues: ProductI) => {
   try {
-    const response = await axios.put(`${API_URL}/products/${formValues.id}`, formValues);
+    const response = await axios.put(`${URL}/${formValues.id}`, formValues);
     toast.success('Товар успешно обновлен');
     return response.data;
   } catch (err) {

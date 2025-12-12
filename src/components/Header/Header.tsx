@@ -47,7 +47,7 @@ export default memo(function Header() {
               <source srcSet="./imgMedium.png" media="(max-width: 1024px)" /> */}
               <img src="./img.png" alt="Profile" />
             </picture>
-            <p>{user.name}</p>
+            <p>{user?.name}</p>
             <img className="profile__img" src="./care.svg" alt="Dropdown" />
           </Link>
         </header>
