@@ -20,7 +20,7 @@ export const useModalForm = (
   useEffect(() => {
     if (MODAL_MODE.EDIT === mode && user) {
       reset({
-        name: user.name,
+        name: user?.name,
         email: user.email,
         role: user.role,
         created: user.created.split('T')[0],

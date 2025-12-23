@@ -17,10 +17,10 @@ export default memo(function Profile() {
                 <img src="./img/img.png" alt="" className="user__img" />
                 <div className="user__top-top">
                   <div className="user__name-top">
-                    <p className="user__name">{user.name}</p>
+                    <p className="user__name">{user?.name}</p>
                   </div>
 
-                  <p className="user__email">{user.email}</p>
+                  <p className="user__email">{user?.email}</p>
                   <div className="user__button">
                     <button className="user__resume">Resume</button>
                     <img className="user__button-img" src="./img/care.svg" alt="" />

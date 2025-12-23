@@ -28,7 +28,7 @@ const Register = () => {
     console.log('onSubmit вызван!', formValues);
     try {
       const userData: LocalUserI = {
-        name: formValues.name,
+        name: formValues?.name,
         email: formValues.email,
         password: formValues.password,
         created: new Date().toISOString(),
