@@ -16,6 +16,7 @@ export const fetchUsers = createAsyncThunk('user/fetchUsers', async () => {
     return response.data;
   } catch (err) {
     console.error('Ошибка при загрузке пользователей:', err);
+    return [];
   }
 });
 

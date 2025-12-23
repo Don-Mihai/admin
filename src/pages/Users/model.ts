@@ -27,7 +27,7 @@ export const useUsers = () => {
 
         keys.forEach((key) => {
           // @ts-ignore
-          if (user[key as keyof UserI].includes(serchText)) {
+          if (user[key as keyof UserI].includes?.(serchText)) {
             isMatch = true;
           }
         });
