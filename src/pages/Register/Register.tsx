@@ -9,6 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { ROUTES } from '@/routes/types';
+import { sendEmail } from '@/services/email';
 
 interface RegisterFormValues {
   name: string;
@@ -25,7 +26,6 @@ const Register = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (formValues: RegisterFormValues) => {
-    console.log('onSubmit вызван!', formValues);
     try {
       const userData: LocalUserI = {
         name: formValues?.name,
@@ -35,9 +35,12 @@ const Register = () => {
         role: 'client',
         status: 'student'
       };
-      const res = await dispatch(createUsers(userData)).unwrap();
-      localStorage.setItem('userId', res?.id || '');
-      navigate(ROUTES.PROFILE);
+      // const res = await dispatch(createUsers(userData)).unwrap();
+      // localStorage.setItem('userId', res?.id || '');
+
+      await sendEmail('mihai807@mail.ru', { message: 'Welcome to our platform', data: userData });
+
+      // navigate(ROUTES.PROFILE);
     } catch (error) {
       console.error('Ошибка при регистрации:', error);
     }
@@ -54,7 +57,7 @@ const Register = () => {
           <p className={styles.subtitle}>Присоединяйтесь к нам сегодня</p>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit, onError)} className={styles.form}>
+        <div className={styles.form}>
           <div className={styles.inputGroup}>
             <label className={styles.label}>Имя</label>
             <input {...register('name')} className={styles.input} placeholder="Введите ваше имя" />
@@ -96,7 +99,7 @@ const Register = () => {
           <button type="button" className={styles.submitButton} onClick={handleSubmit(onSubmit, onError)}>
             Зарегистрироваться
           </button>
-        </form>
+        </div>
 
         <div className={styles.footer}>
           <p>
