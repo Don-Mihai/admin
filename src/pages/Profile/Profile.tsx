@@ -3,9 +3,19 @@ import Header from '../../components/Header/Header';
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
+import UploadAvatar from '@/components/UploadAvatar';
+import axios from 'axios';
+import { API_URL } from '@/utiles/api';
 
 export default memo(function Profile() {
   const user = useSelector((state: RootState) => state.user.currentUser);
+
+  const uploadFile = (file: File) => {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    axios.post(`${API_URL}/upload-avatar`, formData);
+  };
   return (
     <div>
       <div className="wrapper">
@@ -14,7 +24,7 @@ export default memo(function Profile() {
           <div className="user__contaner-left">
             <div className="user__top">
               <div className="user__info-img">
-                <img src="./img/img.png" alt="" className="user__img" />
+                <UploadAvatar imageUrl={API_URL + user?.avatarUrl || ''} uploadFile={uploadFile} />
                 <div className="user__top-top">
                   <div className="user__name-top">
                     <p className="user__name">{user?.name}</p>

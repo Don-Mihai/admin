@@ -6,6 +6,7 @@ export interface UserI {
   email: string;
   name: string;
   password?: string;
+  avatarUrl?: string;
 }
 
 export interface LocalUserI extends Omit<UserI, 'id'> {}
