@@ -22,7 +22,7 @@ export const fetchUsers = createAsyncThunk('user/fetchUsers', async () => {
 
 export const fetchUserById = createAsyncThunk('user/fetchUserById', async (userId: string | null) => {
   try {
-    const response = await axios.get(`${API_URL}/users/${userId}`);
+    const response = await axios.post(`${API_URL}/users/by-id`, { id: userId });
     return response.data;
   } catch (err) {
     console.error('Ошибка при загрузке пользователей:', err);
@@ -73,7 +73,11 @@ export const editUsers = createAsyncThunk('user/editUsers', async (formValues: U
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    logoutUser: (state) => {
+      state.currentUser = {} as UserI;
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchUsers.fulfilled, (state, action) => {
       state.users = action.payload;
@@ -98,6 +102,6 @@ export const userSlice = createSlice({
   }
 });
 
-export const {} = userSlice.actions;
+export const { logoutUser } = userSlice.actions;
 
 export default userSlice.reducer;

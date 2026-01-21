@@ -14,8 +14,9 @@ export default memo(function Profile() {
     const formData = new FormData();
     formData.append('file', file);
 
-    axios.post(`${API_URL}/upload-avatar`, formData);
+    axios.post(`${API_URL}/upload-avatar/${user.id}`, formData);
   };
+
   return (
     <div>
       <div className="wrapper">
@@ -24,7 +25,7 @@ export default memo(function Profile() {
           <div className="user__contaner-left">
             <div className="user__top">
               <div className="user__info-img">
-                <UploadAvatar imageUrl={API_URL + user?.avatarUrl || ''} uploadFile={uploadFile} />
+                <UploadAvatar imageUrl={API_URL + '/' + user?.avatarUrl || ''} uploadFile={uploadFile} />
                 <div className="user__top-top">
                   <div className="user__name-top">
                     <p className="user__name">{user?.name}</p>

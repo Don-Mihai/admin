@@ -35,12 +35,12 @@ const Register = () => {
         role: 'client',
         status: 'student'
       };
-      // const res = await dispatch(createUsers(userData)).unwrap();
-      // localStorage.setItem('userId', res?.id || '');
+      const res = await dispatch(createUsers(userData)).unwrap();
+      localStorage.setItem('userId', res?.id || '');
 
-      await sendEmail('mihai807@mail.ru', { message: 'Welcome to our platform', data: userData });
+      // await sendEmail('mihai807@mail.ru', { message: 'Welcome to our platform', data: userData });
 
-      // navigate(ROUTES.PROFILE);
+      navigate(ROUTES.PROFILE);
     } catch (error) {
       console.error('Ошибка при регистрации:', error);
     }
